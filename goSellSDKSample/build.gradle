@@ -28,10 +28,18 @@ android {
         vectorDrawables.useSupportLibrary = true
 
     }
-
+    signingConfigs {
+        garbage_key {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('/$HOME/.android/debug.keystore')
+            storePassword 'android'
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.garbage_key
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         customDebugType {
